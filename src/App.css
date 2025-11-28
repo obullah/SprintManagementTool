@@ -76,6 +76,7 @@ body {
 /* single-row input layout */
 .form-row {
   display: flex;
+  flex-wrap: wrap;      /* allow wrapping */
   gap: 12px;
   margin-bottom: 16px;
 }
@@ -84,6 +85,10 @@ body {
 .field {
   flex: 1;
   min-width: 140px;
+}
+
+.field-sprint-duration {
+  flex-basis: 100%;     /* take full row for sprint duration */
 }
 
 .field label {
@@ -113,6 +118,113 @@ body {
   border-color: #4f46e5;
   box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25);
   background: #ffffff;
+}
+
+/* date range for sprint duration */
+.date-range {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.date-range input[type="date"] {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.date-range input[type="date"]:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25);
+  background: #ffffff;
+}
+
+.date-separator {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.duration-hint {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* ROLES SECTION */
+.roles-section {
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.roles-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.roles-header h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.roles-add {
+  display: flex;
+  gap: 6px;
+  min-width: 220px;
+}
+
+.roles-add input {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 12px;
+  background: #f8fafc;
+}
+
+.roles-add input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25);
+  background: #ffffff;
+}
+
+.roles-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.role-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #e0f2fe;
+  color: #0369a1;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.role-remove {
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  cursor: pointer;
+  color: #0f172a;
 }
 
 /* TEAM MEMBERS SECTION */
@@ -169,7 +281,7 @@ body {
 
 .members-row {
   display: grid;
-  grid-template-columns: 2.2fr 0.8fr 1fr 0.4fr;
+  grid-template-columns: 2.2fr 0.8fr 0.8fr 0.8fr 0.4fr;
   gap: 8px;
   align-items: center;
   font-size: 13px;
@@ -337,7 +449,7 @@ button:disabled {
 
 /* members result table */
 .members-result-table .members-row {
-  grid-template-columns: 1.6fr 0.5fr 0.6fr 0.9fr 0.8fr 0.8fr;
+  grid-template-columns: 1.6fr 0.6fr 0.6fr 0.6fr 0.8fr 0.8fr 0.8fr;
   padding: 2px 0;
   border-bottom: 1px solid #e5e7eb;
 }
@@ -355,20 +467,10 @@ button:disabled {
   .header-row {
     flex-direction: column;
   }
-
-  .members-row,
-  .members-result-table .members-row {
-    grid-template-columns: 1.6fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr;
-  }
 }
 
 @media (max-width: 640px) {
   .form-row {
     flex-wrap: wrap;
-  }
-
-  .members-row,
-  .members-result-table .members-row {
-    grid-template-columns: 1.6fr 0.8fr 0.8fr 0.8fr 0.8fr 0.8fr;
   }
 }
